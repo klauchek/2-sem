@@ -42,6 +42,7 @@ private:
         void visit(int* a, int* i);
         //int* DFS();
         void correct_height();
+        /*unsigned int get_height();*/
         
     };
 
@@ -50,7 +51,7 @@ private:
 
 public:
 
-    subset();
+    subset(int key);
     ~subset();
 
 
@@ -65,8 +66,6 @@ unsigned int get_height();
 unsigned int get_size();
 
 
-
-    //add the element to the tree, ignore doubles
 
     
 };

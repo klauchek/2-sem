@@ -2,12 +2,13 @@
 
 
 
-subset::subset()
+subset::subset(int key)
 {
-    root = nullptr;
-    size = 0;
-   /* root = new node(key);
-    size = 1;*/
+   /* root = nullptr;
+    size = 0;*/
+    root = new node(key);
+    size = 1;
+    
 }
 
 subset::~subset()
@@ -16,12 +17,7 @@ subset::~subset()
 }
 
 
-/*  subset my_tree .... my_tree.root->find(key) */
 
-//! Example
-//! subset my_tree .... node* cur = my_tree.find();
-
-//! Method for seraching in my tree
 subset::node* subset:: find(int key)
 {
     return root->find(key);
@@ -51,14 +47,13 @@ bool subset::insert(int key)
 {
     if (root->insert(key))
         size++;
-
     return root->insert(key);
 
 
 }
 
 //add the element to the tree, ignore doubles
-bool subset::node::insert(int key) 
+bool subset::node:: insert(int key)
 {
     node* cur = this;
 
@@ -75,9 +70,13 @@ bool subset::node::insert(int key)
         return false;
 
     if (key < cur->key_)
+    {
         return cur->left_->insert(key);
+    }
     else if (key > cur->key_)
+    {
         return cur->right_->insert(key);
+    }
 }
 
 //if insert == true
@@ -94,7 +93,6 @@ void subset::node::del_elem(int k) {
 
     node* cur = this;
     if (cur == NULL)
-        /*height = correct_height();*/
         return;
     if (cur->left_)
         cur->left_->del_elem(k);
@@ -169,23 +167,12 @@ bool subset::node::remove(int key) {
 }
 
 
-//number of elements in the tree  // ok!
-
-
-
-
-//the height of the tree // 
 
 unsigned int subset::get_height() {
 
-    return root->height;
+    return root->node::height;
 }
 
-//
-//unsigned int subset::correct_height() {
-//
-//    return root->correct_height();
-//}
 
 
 void subset::node::correct_height() {
@@ -197,15 +184,15 @@ void subset::node::correct_height() {
        this->height = 0;
     if (this->right_ != nullptr)
     {
-        h_r = this->right_->height;
+        h_r = right_->height;
     }
-    else h_r = 0;
+
 
     if (this->left_ != nullptr)
     {
-        h_l = this->left_->height;
+        h_l = left_->height;
     }
-    else h_l = 0;
+ 
 
     height = (max(h_r, h_l) + 1);
 

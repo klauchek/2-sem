@@ -64,7 +64,7 @@ int main()
 
     cout << "Test sequence initialization: \t\t\t\t" << finish - start << endl;
 
-    subset sn;
+    subset sn(0);
 
     //-----------Test 000 Insert of a sequent sequence
 
