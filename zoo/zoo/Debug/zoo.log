@@ -1,0 +1,10 @@
+﻿  zoo.cpp
+d:\code\2-sem\zoo\zoo\zoo.cpp(15): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+d:\code\2-sem\zoo\zoo\zoo.cpp(25): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+d:\code\2-sem\zoo\zoo\zoo.cpp(26): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+d:\code\2-sem\zoo\zoo\zoo.cpp(191): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+  zoo.vcxproj -> D:\Code\2-sem\zoo\Debug\zoo.exe

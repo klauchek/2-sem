@@ -1,14 +1,4 @@
-﻿  main.cpp
-D:\Code\2-sem\subset_oop\subset_oop\main.cpp(11,19): warning C4244: инициализация: преобразование "_Rep" в "unsigned int", возможна потеря данных
-          with
-          [
-              _Rep=__int64
-          ]
-D:\Code\2-sem\subset_oop\subset_oop\main.cpp(157,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Code\2-sem\subset_oop\subset_oop\main.cpp(229,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Code\2-sem\subset_oop\subset_oop\main.cpp(406,23): warning C4018: <: несоответствие типов со знаком и без знака
-  subset_oop.cpp
-  Создание кода...
-D:\Code\2-sem\subset_oop\subset_oop\subset_oop.cpp(45): warning C4715: subset::node::find: значение возвращается не при всех путях выполнения
-D:\Code\2-sem\subset_oop\subset_oop\subset_oop.cpp(85): warning C4715: subset::node::insert: значение возвращается не при всех путях выполнения
+﻿  subset_oop.cpp
+D:\Code\2-sem\subset_oop\subset_oop\subset_oop.cpp(40): warning C4715: subset::node::find: значение возвращается не при всех путях выполнения
+D:\Code\2-sem\subset_oop\subset_oop\subset_oop.cpp(80): warning C4715: subset::node::insert: значение возвращается не при всех путях выполнения
   subset_oop.vcxproj -> D:\Code\2-sem\subset_oop\Debug\subset_oop.exe

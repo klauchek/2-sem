@@ -17,65 +17,71 @@ subset::~subset()
 }
 
 
-
-subset::node* subset:: find(int key)
+bool subset::find(int key)  //?? ok
 {
-    return root->find(key);
-}
+    node* cur = root;
 
-//! Hepler method for searching in my tree
-subset::node* subset::node::find(int key)
-{
-    node* cur = this;
+    while (cur != nullptr)
+    {
+        if (key == cur->key_)
+            return true;
+        if (key > cur->key_)
+            cur = cur->right_;
+        if (key < cur->key_)
+            cur = cur->left_;
+    }
 
-    if (cur == nullptr)
-        return cur;
-
-    if (key > cur->key_)
-        return cur->right_->find(key);
-
-    if (key < cur->key_)
-        return cur->left_->find(key);
-
+    return false;
 }
 
 
-
-//! tree.insert();
-
-bool subset::insert(int key)
-{
-    if (root->insert(key))
-        size++;
-    return root->insert(key);
-
-
-}
 
 //add the element to the tree, ignore doubles
-bool subset::node:: insert(int key)
+bool subset::insert(int key)  //?? ok
 {
-    node* cur = this;
-
-    if (!cur)
+    if (size = 0)
     {
-        cur = new node(key);
-        cur->correct_height();
+        node* root = new node(key);
+        size++;
 
         return true;
     }
-
-
-    if (cur->find(key) != nullptr)
-        return false;
-
-    if (key < cur->key_)
+    else
     {
-        return cur->left_->insert(key);
-    }
-    else if (key > cur->key_)
-    {
-        return cur->right_->insert(key);
+        node* cur = root;
+        while (cur->key_ != key)
+        {
+            if (key > cur->key_)
+            {
+                if (cur->right_ == nullptr)
+                {
+                    node* right_leaf = new node(key, nullptr, nullptr, cur);
+                    cur->right_ = right_leaf;
+
+                    cur->correct_height();
+                    size++;
+
+                    break;
+                }
+
+                else cur = cur->right_;
+            }
+            else if (key < cur->key_)
+            {
+                if (cur->left_ == nullptr)
+                {
+                    node* left_leaf = new node(key, nullptr, nullptr, cur);
+                    cur->left_ = left_leaf;
+
+                    cur->correct_height();
+                    size++;
+
+                    break;
+                }
+                else cur = cur->left_;
+            }
+        }
+        return true;
     }
 }
 
@@ -89,52 +95,58 @@ bool subset::node:: insert(int key)
 //    return root->del_elem(key);
 //}
 
-void subset::node::del_elem(int k) {
+bool subset::del_elem(int key) {
 
-    node* cur = this;
-    if (cur == NULL)
+   if (size = 0)
         return;
-    if (cur->left_)
-        cur->left_->del_elem(k);
-    if (cur->right_)
-        cur->right_->del_elem(k);
+   else
+   {
+       node* cur = root;
+      /* if (cur->left_)
+           cur->left_->del_elem(key);
+       if (cur->right_)
+           cur->right_->del_elem(key);*/
+       while (cur->key_ != key)
+       {
+           //сase 2: 
+           if (cur->left_ == nullptr)
+           {
+               node* right_leaf = cur->right_;
+               delete cur;
+               cur = right_leaf;
+           }
+           else if (cur->right_ == nullptr)
+           {
+               node* left_leaf = cur->left_;               
+               delete cur;
+               cur = left_leaf;
+           }
 
-    if (cur->left_ == NULL)
-    {
-        node* right = cur->right_;
-        delete cur;
-        cur = right;
-    }
-    else if (cur->right_== NULL)
-    {
-        node* left = cur->left_;
-        delete cur;
-        cur = left;
-    }
-    else
-    {
+           else
+           {
 
-        node* right = cur->right_;
-        if (right->left_ == NULL)
-        {
-            cur->key_ = right->key_;
-            cur->right_ = right->right_;
-            delete right;
-        }
-        else
-        {
-            node* min_parent = right;
-           
-            while (min_parent->left_->left_ != NULL)
-            {
-                min_parent = min_parent->left_;
-            }
-            node* min = min_parent->left_;
-            min_parent->left_ = min->right_;
-            delete min;
-        }
-    }
+               node* right = cur->right_;
+               if (right->left_ == NULL)
+               {
+                   cur->key_ = right->key_;
+                   cur->right_ = right->right_;
+                   delete right;
+               }
+               else
+               {
+                   node* min_parent = right;
 
+                   while (min_parent->left_->left_ != NULL)
+                   {
+                       min_parent = min_parent->left_;
+                   }
+                   node* min = min_parent->left_;
+                   min_parent->left_ = min->right_;
+                   delete min;
+               }
+           }
+       }
+   }
 }
 
 //"del_elem" but for profiler
@@ -142,6 +154,7 @@ void subset::node::del_elem(int k) {
 bool subset::remove(int key) {
 
     if (root->remove(key))
+
         size--;
 
     return root->remove(key);
@@ -184,13 +197,13 @@ void subset::node::correct_height() {
        this->height = 0;
     if (this->right_ != nullptr)
     {
-        h_r = right_->height;
+        h_r = this->right_->height;
     }
 
 
     if (this->left_ != nullptr)
     {
-        h_l = left_->height;
+        h_l = this->left_->height;
     }
  
 
@@ -206,9 +219,9 @@ void subset::destructor() {
     size = 0;
 }
 
-void subset::node::destructor()
+void subset::destructor()
 {
-    node* cur = this;
+    node* cur = root;
     if (cur == nullptr)
     return;
     if (cur->left_)
@@ -228,9 +241,9 @@ unsigned int subset::get_size() {
 }
 
 //for DFS
-void subset::node::visit(int* a, int* i) {
+void subset::visit(int* a, int* i) {
 
-    node* cur = this;
+    node* cur = root;
 
     if (cur == nullptr)
         return;

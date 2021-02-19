@@ -23,27 +23,28 @@ private:
         int key_;
         node* right_;
         node* left_;
+        node* parent_;
         unsigned int height = 0;
 
 
-        node(int key,node* right = nullptr, node* left = nullptr)
+        node(int key, node* right = nullptr, node* left = nullptr, node* parent = nullptr)
         {
             key_ = key;
             right_ = right;
             left_ = left;
+            parent_ = parent;
         }
 
-        //find an element in the tree
-        node* find(int key);
-        bool insert(int key);
-        void del_elem(int key);
-        bool remove(int key);
-        void destructor();
-        void visit(int* a, int* i);
-        //int* DFS();
-        void correct_height();
-        /*unsigned int get_height();*/
-        
+        ////find an element in the tree
+        //node* find(int key);
+        //bool insert(int key);
+        //void del_elem(int key);
+        //bool remove(int key);
+        //void destructor();
+        ////int* DFS();
+        void correct_height()
+        ///*unsigned int get_height();*/
+        //
     };
 
     node* root;
@@ -55,13 +56,14 @@ public:
     ~subset();
 
 
-node* find(int key);
+bool find(int key);
 bool insert(int key);
-//void del_elem(int key);
+bool del_elem(int key);
 bool remove(int key);
 void destructor();
 int* DFS();
-//unsigned int correct_height();
+void visit(int* a, int* i);
+//void correct_height();
 unsigned int get_height();
 unsigned int get_size();
 
