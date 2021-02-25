@@ -3,13 +3,14 @@
 #include "zoo.h"
 #include "zoo_map.h"
 
-ANIMAL::ANIMAL(String F, float X, float Y, float A, float B, float W, float H)
+ANIMAL::ANIMAL(String F_I, String F_S, float X, float Y, float A, float B, float W, float H)
 {
-    File = F;
-    image.loadFromFile("Images/" + File);
+    File_I = F_I;
+    File_S = F_S;
+    image.loadFromFile("Images/" + File_I);
     texture.loadFromImage(image);
     sprite.setTexture(texture);
-    buffer.loadFromFile("Sound/" + File);
+    buffer.loadFromFile("Sound/" + File_S);
     sound.setBuffer(buffer);
     x = X; y = Y;
     a = A; b = B;
@@ -81,7 +82,7 @@ bool ANIMAL::update(float time, String zoo_map[])
     return interactionWithMap(zoo_map, time);
 }
 
-bool control(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames)
+bool ANIMAL::control(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames)
 {
     ANIMAL.direction = dir;
     ANIMAL.speed = 0.00;
@@ -92,62 +93,62 @@ bool control(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zo
     switch (dir)
     {
     case UP:
-    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame) + 6, 150, 40, 40));
+    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(a * int(CurrentFrame) + 6, b, w, h));
         break;
 
     case DOWN:
-    case LEFT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame + 1) + 6, 150, -40, 40));
+    case LEFT: ANIMAL.sprite.setTextureRect(IntRect(a * int(CurrentFrame + 1) + 6, b, w, h));
         break;
     }
 
     return (ANIMAL.update(time, zoo_map));
 }
 
-
-//-------------------------------------------------------------! MOVING SIMBA!
-bool control_pumba(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[])
-{
-    ANIMAL.direction = dir;
-    ANIMAL.speed = 0.00;
-    CurrentFrame += 0.1f * time;
-
-    CurrentFrame = CurrentFrame > 5 ? 0 : CurrentFrame;
-
-    switch (dir)
-    {
-    case UP:
-    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame) + 6, 150, 40, 40));
-        break;
-
-    case DOWN:
-    case LEFT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame + 1) + 6, 150, -40, 40));
-        break;
-    }
-
-    return (ANIMAL.update(time, zoo_map));
-}
-
-bool control_timon(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[])
-{
-    ANIMAL.direction = dir;
-    ANIMAL.speed = 0.00;
-    CurrentFrame += 0.1f * time;
-
-    CurrentFrame = CurrentFrame > 9 ? 0 : CurrentFrame;
-
-    switch (dir)
-    {
-    case UP:
-    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(37 * int(CurrentFrame) + 360, 600, 37, 51));
-        break;
-    case DOWN:
-    case LEFT:  ANIMAL.sprite.setTextureRect(IntRect(37 * int(CurrentFrame + 1) + 360, 600, -37, 51));
-        break;
-    default:    break;
-    }
-
-    return (ANIMAL.update(time, zoo_map));
-}
+//
+////-------------------------------------------------------------! MOVING SIMBA!
+//bool control_pumba(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[])
+//{
+//    ANIMAL.direction = dir;
+//    ANIMAL.speed = 0.00;
+//    CurrentFrame += 0.1f * time;
+//
+//    CurrentFrame = CurrentFrame > 5 ? 0 : CurrentFrame;
+//
+//    switch (dir)
+//    {
+//    case UP:
+//    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame) + 6, 150, 40, 40));
+//        break;
+//
+//    case DOWN:
+//    case LEFT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame + 1) + 6, 150, -40, 40));
+//        break;
+//    }
+//
+//    return (ANIMAL.update(time, zoo_map));
+//}
+//
+//bool control_timon(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[])
+//{
+//    ANIMAL.direction = dir;
+//    ANIMAL.speed = 0.00;
+//    CurrentFrame += 0.1f * time;
+//
+//    CurrentFrame = CurrentFrame > 9 ? 0 : CurrentFrame;
+//
+//    switch (dir)
+//    {
+//    case UP:
+//    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(37 * int(CurrentFrame) + 360, 600, 37, 51));
+//        break;
+//    case DOWN:
+//    case LEFT:  ANIMAL.sprite.setTextureRect(IntRect(37 * int(CurrentFrame + 1) + 360, 600, -37, 51));
+//        break;
+//    default:    break;
+//    }
+//
+//    return (ANIMAL.update(time, zoo_map));
+//}
 
 
 //.................DRAWING MAP......................//

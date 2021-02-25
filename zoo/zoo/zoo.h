@@ -34,14 +34,15 @@ protected:
 public:
     float speed = 0;
     int direction = 0;
-    String File;
+    String File_I;
+    String File_S;
     Image image;
     Texture texture;
     Sprite sprite;
     SoundBuffer buffer;
     Sound sound;
 
-    ANIMAL(String F, float X, float Y, float A, float B, float W, float H);
+    ANIMAL(String F_I, String F_S, float X, float Y, float A, float B, float W, float H);
     ~ANIMAL();
     bool interactionWithMap(String zoo_map[], float time);
     bool update(float time, String zoo_map[]);
@@ -51,18 +52,18 @@ public:
 };
 
 
-class Day_Animal:: public ANIMAL
+class Day_Animal: public ANIMAL
 {
 //оставить цвет карты таким же - двигаются. Когда меняем цвет карты на темный -  нет.
 };
 
-class Night_Animal:: public ANIMAL
+class Night_Animal: public ANIMAL
 {
     //поменять цвет карты на темный - двигаются. когда цвет карты светлый - нет.
 };
 
 //у всех остальных меняем только talk
-class Simba:: public Day_Animal
+class Simba: public Day_Animal
 {
     int cage_number;
 };

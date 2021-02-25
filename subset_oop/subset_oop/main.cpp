@@ -1,24 +1,29 @@
 #include "subset_oop.h"
 
-
 int main()
 {
 
 	subset sn(0);
 
-	sn.insert(1);
+	//sn.insert(1);
 	sn.insert(5);
 	sn.insert(2);
 	sn.insert(7);
+	//sn.insert(9);
+	sn.insert(4);
+	sn.insert(3);
+	//sn.insert(0);
+	sn.correct_height();
 	cout << sn.get_size();
+	cout << endl;
 	cout << sn.get_height();
-	sn.remove(7);
-	sn.remove(1);
-	cout << sn.get_size();
+	//sn.remove(7);
+	//sn.remove(1);
+	/*cout << sn.get_size();*/
 
 	return 0;
 }
-//
+
 //
 //double get_time()
 //{
@@ -47,7 +52,7 @@ int main()
 //    cout << std::fixed;
 //    cout.precision(4);
 //
-//   //--------------Initialization
+//    //--------------Initialization
 //
 //    start = get_time();
 //    for (int i = 0; i < n; i++)
@@ -100,14 +105,15 @@ int main()
 //        cout << endl << "--- !!! Failed insert consistency or size measurement, wrong number of elements !!! ---" << endl;
 //        return 0;
 //    }
-//    if (sn.get_height() != n)
-//    {
-//        cout << endl << "--- !!! Failed insert consistency or height measurement, wrong height !!! ---" << endl;
-//        return 0;
-//    }
-//
-//    cout << "000 Insert of a sequent sequence: \t\t\t\t" << finish - start << endl;
-//    total += finish - start;
+    //    if (sn.get_height() != n)
+    //    {
+    //        cout << endl << "--- !!! Failed insert consistency or height measurement, wrong height !!! ---" << endl;
+    //        return 0;
+    //    }
+    //
+    //cout << "000 Insert of a sequent sequence: \t\t\t\t" << finish - start << endl;
+    //total += finish - start;
+//}
 //
 //   // ----------- Test 001 Finding of a sequent sequence
 //

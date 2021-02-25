@@ -24,7 +24,8 @@ private:
         node* right_;
         node* left_;
         node* parent_;
-        unsigned int height = 0;
+        
+        bool visit = true;
 
 
         node(int key, node* right = nullptr, node* left = nullptr, node* parent = nullptr)
@@ -42,11 +43,13 @@ private:
         //bool remove(int key);
         //void destructor();
         ////int* DFS();
-        void correct_height()
+        /*void correct_height();*/
         ///*unsigned int get_height();*/
         //
+        
     };
 
+    unsigned int height;
     node* root;
     size_t size; 
 
@@ -58,11 +61,13 @@ public:
 
 bool find(int key);
 bool insert(int key);
-bool del_elem(int key);
-bool remove(int key);
+//bool del_elem(int key);
+//bool remove(int key);
 void destructor();
-int* DFS();
-void visit(int* a, int* i);
+void correct_height();
+
+//int* DFS();
+//void visit(int* a, int* i);
 //void correct_height();
 unsigned int get_height();
 unsigned int get_size();
