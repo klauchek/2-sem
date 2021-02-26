@@ -3,6 +3,7 @@
 #include "zoo.h"
 #include "zoo_map.h"
 
+
 ANIMAL::ANIMAL(String F_I, String F_S, float X, float Y, float A, float B, float W, float H)
 {
     File_I = F_I;
@@ -18,20 +19,13 @@ ANIMAL::ANIMAL(String F_I, String F_S, float X, float Y, float A, float B, float
     sprite.setTextureRect(IntRect(a, b, w, h));
 };
 
-ANIMAL::~ANIMAL()
-{
 
-}
 
-void ANIMAL::talk()
+void ANIMAL::feed(int cage)
 {
 sound.play();
 }
 
-//void ANIMAL:: feed(int cage_number)
-//{
-//    if ((Keyboard::isKeyPressed(Keyboard:: )))
-//}
 
 
 bool ANIMAL::interactionWithMap(String zoo_map[], float time)
@@ -41,6 +35,7 @@ bool ANIMAL::interactionWithMap(String zoo_map[], float time)
             switch (zoo_map[i][j])
             {
             case 'y':
+            case 'b':
             case 'x':
                 x -= dx * time;
                 y -= dy * time;
@@ -82,10 +77,15 @@ bool ANIMAL::update(float time, String zoo_map[])
     return interactionWithMap(zoo_map, time);
 }
 
-bool ANIMAL::control(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames)
+bool ANIMAL::control(float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames, int mode)
 {
-    ANIMAL.direction = dir;
-    ANIMAL.speed = 0.00;
+    direction = dir;
+    
+    if (mode == DAY)
+        speed = 0.06;
+    else if (mode == NIGHT)
+        speed = 0.00;
+
     CurrentFrame += 0.1f * time;
 
     CurrentFrame = CurrentFrame > sprite_num_frames ? 0 : CurrentFrame;
@@ -93,67 +93,23 @@ bool ANIMAL::control(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, S
     switch (dir)
     {
     case UP:
-    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(a * int(CurrentFrame) + 6, b, w, h));
+    case RIGHT: sprite.setTextureRect(IntRect(w * int(CurrentFrame) + a, b, w, h));
         break;
 
     case DOWN:
-    case LEFT: ANIMAL.sprite.setTextureRect(IntRect(a * int(CurrentFrame + 1) + 6, b, w, h));
+    case LEFT: sprite.setTextureRect(IntRect(w * int(CurrentFrame + 1) + a, b, w, h));
         break;
     }
 
-    return (ANIMAL.update(time, zoo_map));
+    return (update(time, zoo_map));
 }
-
-//
-////-------------------------------------------------------------! MOVING SIMBA!
-//bool control_pumba(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[])
-//{
-//    ANIMAL.direction = dir;
-//    ANIMAL.speed = 0.00;
-//    CurrentFrame += 0.1f * time;
-//
-//    CurrentFrame = CurrentFrame > 5 ? 0 : CurrentFrame;
-//
-//    switch (dir)
-//    {
-//    case UP:
-//    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame) + 6, 150, 40, 40));
-//        break;
-//
-//    case DOWN:
-//    case LEFT: ANIMAL.sprite.setTextureRect(IntRect(38 * int(CurrentFrame + 1) + 6, 150, -40, 40));
-//        break;
-//    }
-//
-//    return (ANIMAL.update(time, zoo_map));
-//}
-//
-//bool control_timon(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[])
-//{
-//    ANIMAL.direction = dir;
-//    ANIMAL.speed = 0.00;
-//    CurrentFrame += 0.1f * time;
-//
-//    CurrentFrame = CurrentFrame > 9 ? 0 : CurrentFrame;
-//
-//    switch (dir)
-//    {
-//    case UP:
-//    case RIGHT: ANIMAL.sprite.setTextureRect(IntRect(37 * int(CurrentFrame) + 360, 600, 37, 51));
-//        break;
-//    case DOWN:
-//    case LEFT:  ANIMAL.sprite.setTextureRect(IntRect(37 * int(CurrentFrame + 1) + 360, 600, -37, 51));
-//        break;
-//    default:    break;
-//    }
-//
-//    return (ANIMAL.update(time, zoo_map));
-//}
 
 
 //.................DRAWING MAP......................//
-void draw_map(Sprite& s_map, RenderWindow& window, Sprite& pumbasprite,
-    Sprite& timonsprite, String zoo_map[])
+void draw_map(Sprite& s_map, RenderWindow& window, Sprite& pumbasprite, Sprite& timonsprite, Sprite& zazusprite,
+    Sprite& bearsprite, Sprite& simbasprite, Sprite& foxsprite,
+    Sprite& owlsprite, Sprite& wolfsprite,
+    Sprite& hedgehogsprite, Sprite& haresprite, String zoo_map[])
 {
     for (int i = 0; i < HEIGHT_MAP; i++)
         for (int j = 0; j < WIDTH_MAP; j++)
@@ -178,6 +134,14 @@ void draw_map(Sprite& s_map, RenderWindow& window, Sprite& pumbasprite,
 
     window.draw(pumbasprite);
     window.draw(timonsprite);
+    window.draw(haresprite);
+    window.draw(foxsprite);
+    window.draw(bearsprite);
+    window.draw(simbasprite);
+    window.draw(zazusprite);
+    window.draw(wolfsprite);
+    window.draw(owlsprite);
+    window.draw(hedgehogsprite);
     window.display();
 }
 
@@ -186,19 +150,44 @@ void draw_map(Sprite& s_map, RenderWindow& window, Sprite& pumbasprite,
 
 void zoo_run(RenderWindow& window)
 {
-    Image map_image;      map_image.loadFromFile("Images/map.png");
+    Image map_image;       map_image.loadFromFile("../Images/map.png");
     Texture map;          map.loadFromImage(map_image);
     Sprite s_map;         s_map.setTexture(map);
 
-    ANIMAL pumba("characters/pumba.png", 100, 200, 0, 500, 42, 58);
-    ANIMAL timon("characters/timon.png", 300, 560, 0, 500, 4, 66);
+    /*ANIMAL::ANIMAL(String F_I, String F_S, float X, float Y, float A, float B, float W, float H)*/
+
+    simba simba("characters/simba.png", "simba.ogg", 100, 200, 0, 240, 51, 51);
+    pumba pumba("characters/pumba.png", "pumba.wav", 400, 200, 0, 151,  42, 41);
+    timon timon("characters/timon.png", "timon.wav", 600, 200, 359, 602,  42, 52);
+    
+    zazu zazu("characters/zazu.png", "zazu.ogg", 830, 200, 0, 100, 44, 44);
+    hare hare("characters/hare.png", "hare.ogg", 1050, 200, 80, 0,  55, 34);
+    bear bear("characters/bear.png", "bear.ogg",  100, 500, 0, 17, 55, 50);
+    fox fox("characters/fox.png", "fox.ogg", 350, 500, 0, 140,  51, 35);
+    
+    hedgehog hedgehog("characters/hedgehog.png", "hedgehog.ogg", 600, 500, 0, 100, 67, 44);
+    wolf wolf("characters/wolf.png", "wolf.ogg",  1050, 500, 0, 100, 67, 44);
+    owl owl("characters/owl.png", "owl.ogg",  800, 500, 0, 0, 60, 43);
+
+
+
+   /* simba simba("../Images/characters/simba.png", "simba.ogg", 100, 200, 0, 240, 51, 51);
+    pumba pumba("../Images/characters/pumba.png", "pumba.wav", 400, 200, 4, 151, 42, 41);
+    timon timon("../Images/characters/timon.png", "timon.wav", 700, 200, 359, 602, 42, 52);
+    zazu zazu("../Images/characters/zazu.png", "zazu.ogg", 1000, 200, 0, 100, 44, 44);
+    hare hare("../Images/characters/hare.png", "hare.ogg", 1200, 200, 80, 0, 55, 34);
+    bear bear("../Images/characters/bear.png", "bear.ogg", 100, 600, 0, 17, 55, 50);
+    fox fox("../Images/characters/fox.png", "fox.ogg", 400, 600, 0, 140, 51, 35);
+    hedgehog hedgehog("../Images/characters/hedgehog.png", "hedgehog.ogg", 700, 600, 0, 67, 34, 34);
+    wolf wolf("../Images/characters/wolf.png", "wolf.ogg", 1000, 600, 0, 100, 67, 44);
+    owl owl("../Images/characters/owl.png", "owl.ogg", 1200, 600, 0, 0, 51, 48);*/
 
     float CurrentFrame = 0;
     Clock clock;
 
-    int counter = 0;
-    int dir_pumba = DOWN;
-    int dir_timon = UP;
+    long long int counter = 0;
+    int dir = DOWN;
+    int mode = DAY;
     while (window.isOpen())
     {
         ++counter;
@@ -211,19 +200,64 @@ void zoo_run(RenderWindow& window)
             if (event.type == Event::Closed || Keyboard::isKeyPressed(Keyboard::Escape))
                 window.close();
 
-        if (counter % 700 == 0)
+        if (Keyboard::isKeyPressed(Keyboard::Num0))
+            simba.feed(0);
+        if (Keyboard::isKeyPressed(Keyboard::Num1))
+            pumba.feed(1);
+        if (Keyboard::isKeyPressed(Keyboard::Num2))
+            timon.feed(2);
+        if (Keyboard::isKeyPressed(Keyboard::Num3))
+            zazu.feed(3);
+        if (Keyboard::isKeyPressed(Keyboard::Num4))
+            hare.feed(4);
+        if (Keyboard::isKeyPressed(Keyboard::Num5))
+            bear.feed(5);
+        if (Keyboard::isKeyPressed(Keyboard::Num6))
+            fox.feed(6);
+        if (Keyboard::isKeyPressed(Keyboard::Num7))
+            hedgehog.feed(7);
+        if (Keyboard::isKeyPressed(Keyboard::Num8))
+            wolf.feed(8);
+        if (Keyboard::isKeyPressed(Keyboard::Num9))
+            owl.feed(9);
+    }
+
+    if (counter % 700 == 0)
+        dir = std::rand() % 4 + 4;
+
+    if (counter % 9000 == 0)
+    {
+        if (mode == NIGHT)
         {
-            dir_pumba = std::rand() % 4 + 4;
-            dir_timon = std::rand() % 4 + 4;
+            mode = DAY;
+            std::cout << "----------------------------------DAY NOW! MORNING EVERYONE " << std::endl;
         }
-        control_pumba(pumba, time, CurrentFrame, dir_pumba, zoo_map);
-        control_timon(timon, time, CurrentFrame, dir_timon, zoo_map);
+        else if (mode == DAY)
+        {
+            mode = NIGHT;
+            std::cout << "----------------------------------NIGHT NOW " << std::endl;
+        }
+    }
+        
+
+    pumba.control(time, CurrentFrame, dir, zoo_map, pumba_frames, mode);
+    timon.control(time, CurrentFrame, (dir + 1) % 4 + 4, zoo_map, timon_frames, mode);
+    simba.control(time, CurrentFrame, (dir + 2) % 4 + 4, zoo_map, simba_frames, mode);
+    zazu.control(time, CurrentFrame, (dir + 3) % 4 + 4, zoo_map, zazu_frames, mode);
+    bear.control(time, CurrentFrame, (dir + 4) % 4 + 4, zoo_map, bear_frames, mode);
+    fox.control(time, CurrentFrame, (dir + 5) % 4 + 4, zoo_map, fox_frames, mode);
+    hare.control(time, CurrentFrame, (dir + 6) % 4 + 4, zoo_map, hare_frames, mode);
+
+    owl.control(time, CurrentFrame, (dir + 7) % 4 + 4, zoo_map, owl_frames, !mode);
+    wolf.control(time, CurrentFrame, (dir + 7) % 4 + 4, zoo_map, wolf_frames, !mode);
+    hedgehog.control(time, CurrentFrame, (dir + 8) % 4 + 4, zoo_map, hedgehog_frames, !mode);
 
         //-------------------------------------------------------------------------------
         window.clear();
-        draw_map(s_map, window, pumba.sprite, timon.sprite, zoo_map);
+        draw_map(s_map, window, pumba.sprite, timon.sprite, zazu.sprite, bear.sprite,
+            simba.sprite, fox.sprite, owl.sprite, wolf.sprite, hedgehog.sprite,
+            hare.sprite, zoo_map);
     }
-}
 
 
 //......................ABOUT.......................//
@@ -253,10 +287,7 @@ void run_about(RenderWindow& window)
         if (Keyboard::isKeyPressed(Keyboard::Escape))
             window.close();
 
-        window.clear();
-        window.draw(backsprite);
-        window.draw(textsprite);
-        window.display();
+        int menuNum = 0;
     }
 }
 

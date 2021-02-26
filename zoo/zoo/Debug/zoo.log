@@ -1,10 +1,44 @@
 ﻿  zoo.cpp
-d:\code\2-sem\zoo\zoo\zoo.cpp(15): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+d:\code\2-sem\zoo\zoo\zoo.cpp(19): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
           with
           [
               T=int
           ]
-d:\code\2-sem\zoo\zoo\zoo.cpp(25): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-d:\code\2-sem\zoo\zoo\zoo.cpp(26): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-d:\code\2-sem\zoo\zoo\zoo.cpp(191): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-  zoo.vcxproj -> D:\Code\2-sem\zoo\Debug\zoo.exe
+d:\code\2-sem\zoo\zoo\zoo.cpp(33): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+d:\code\2-sem\zoo\zoo\zoo.cpp(34): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+d:\code\2-sem\zoo\zoo\zoo.cpp(84): warning C4805: ==: небезопасное смешение типа "int" и типа "bool" в операции
+d:\code\2-sem\zoo\zoo\zoo.cpp(85): warning C4305: =: усечение из "double" в "float"
+d:\code\2-sem\zoo\zoo\zoo.cpp(86): warning C4805: ==: небезопасное смешение типа "int" и типа "bool" в операции
+d:\code\2-sem\zoo\zoo\zoo.cpp(96): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+d:\code\2-sem\zoo\zoo\zoo.cpp(100): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+d:\code\2-sem\zoo\zoo\zoo.cpp(194): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+d:\code\2-sem\zoo\zoo\zoo.cpp(230): warning C4805: ==: небезопасное смешение типа "int" и типа "bool" в операции
+d:\code\2-sem\zoo\zoo\zoo.cpp(235): warning C4805: ==: небезопасное смешение типа "int" и типа "bool" в операции
+d:\code\2-sem\zoo\zoo\zoo.cpp(243): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(243): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(244): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(244): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(245): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(245): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(246): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(246): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(247): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(247): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(248): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(248): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(249): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(249): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(251): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(251): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(252): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(252): note: Контекст не позволяет устранить неоднозначность перегруженной функции
+d:\code\2-sem\zoo\zoo\zoo.cpp(253): error C2664: "bool ANIMAL::control(float,float &,int,sf::String [],int,int)": невозможно преобразовать аргумент 1 из "time_t (__cdecl *)(time_t *const )" в "float"
+  d:\code\2-sem\zoo\zoo\zoo.cpp(253): note: Контекст не позволяет устранить неоднозначность перегруженной функции

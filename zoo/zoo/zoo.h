@@ -9,14 +9,35 @@
 
 using namespace sf;
 
+//------------------------menu_buttoms:
 const int ZOO_RUN = 1;
 const int INFO = 2;
 const int EXIT = 3;
 
+//-----------------------directions:
 const int RIGHT = 4;
 const int LEFT = 5;
 const int UP = 6;
 const int DOWN = 7;
+
+//----------------------sprite_num_frames:
+const int simba_frames = 7;
+const int timon_frames = 9;
+const int pumba_frames = 5;
+const int zazu_frames = 10;
+const int bear_frames = 4;
+const int hare_frames = 5;
+const int fox_frames = 3;
+
+const int hedgehog_frames = 4;
+const int wolf_frames = 8;
+const int owl_frames = 6;
+
+//---------------------mode_manager:
+bool DAY = true;
+bool NIGHT = false;
+bool mode = true;
+
 
 void zoo_run(RenderWindow& window);
 void run_about(RenderWindow& window);
@@ -30,7 +51,7 @@ class ANIMAL
 protected:
     float a, b, x, y, w, h;
     float   dx = 0,
-        dy = 0;
+            dy = 0;
 public:
     float speed = 0;
     int direction = 0;
@@ -43,30 +64,135 @@ public:
     Sound sound;
 
     ANIMAL(String F_I, String F_S, float X, float Y, float A, float B, float W, float H);
-    ~ANIMAL();
+
     bool interactionWithMap(String zoo_map[], float time);
     bool update(float time, String zoo_map[]);
-    bool control(ANIMAL& ANIMAL, float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames);
-    virtual void talk();
-    virtual void feed(int cage_number);
+    bool control(float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames, int mode);
+    void feed(int cage);
+
 };
 
 
-class Day_Animal: public ANIMAL
+
+class Day_Animal : public ANIMAL
 {
-//оставить цвет карты таким же - двигаются. Когда меняем цвет карты на темный -  нет.
+public:
+    Day_Animal(String F_I, String F_S, float X, float Y, float A, float B, float W, float H) : ANIMAL(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Day animals here!" << std::endl;
+    };
 };
 
-class Night_Animal: public ANIMAL
+
+class Night_Animal : public ANIMAL
 {
-    //поменять цвет карты на темный - двигаются. когда цвет карты светлый - нет.
+public:
+    Night_Animal(String F_I, String F_S, float X, float Y, float A, float B, float W, float H) : ANIMAL(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Night animals here too!" << std::endl;
+    };
+   
 };
 
-//у всех остальных меняем только talk
-class Simba: public Day_Animal
+//----------------------------Day_Animals:
+
+class simba : public Day_Animal
 {
-    int cage_number;
+    
+
+public:
+    simba(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 0) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Simba - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
 };
+
+class pumba : public Day_Animal
+{
+public:
+    pumba(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 1) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Pumba - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+
+};
+
+class timon : public Day_Animal
+{
+public:
+    timon(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 2) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Timon - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+class zazu : public Day_Animal
+{
+public:
+    zazu(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 3) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Zazu - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+class hare : public Day_Animal
+{
+public:
+    hare(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 4) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Hare - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+class bear : public Day_Animal
+{
+public:
+    bear(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 5) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Bear - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+class fox : public Day_Animal
+{
+public:
+    fox(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 6) : Day_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Fox - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+//-------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------Night_Animals
+
+class hedgehog : public Night_Animal
+{
+public:
+    hedgehog(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 7) : Night_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Hedgehog - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+class wolf : public Night_Animal
+{
+public:
+    wolf(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 8) : Night_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Wolf - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
+class owl : public Night_Animal
+{
+public:
+    owl(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 9) : Night_Animal(F_I, F_S, X, Y, A, B, W, H)
+    {
+        std::cout << "Wolf - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+    }
+};
+
 
 
 #endif PROJECT_ZOO_H
