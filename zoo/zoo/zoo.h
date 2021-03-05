@@ -7,6 +7,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
+#include "zoo_map.h"
+
+
 using namespace sf;
 
 //------------------------menu_buttoms:
@@ -67,7 +70,7 @@ public:
 
     bool interactionWithMap(String zoo_map[], float time);
     bool update(float time, String zoo_map[]);
-    bool control(float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames, int mode);
+    bool control(ANIMAL& animal, float time, float& CurrentFrame, int dir, String zoo_map[], int sprite_num_frames, int mode);
     void feed(int cage);
 
 };
@@ -189,7 +192,7 @@ class owl : public Night_Animal
 public:
     owl(String F_I, String F_S, float X, float Y, float A, float B, float W, float H, int cage = 9) : Night_Animal(F_I, F_S, X, Y, A, B, W, H)
     {
-        std::cout << "Wolf - cage " << cage << ". Press " << cage << " to feed " << std::endl;
+        std::cout << "Owl - cage " << cage << ". Press " << cage << " to feed " << std::endl;
     }
 };
 
