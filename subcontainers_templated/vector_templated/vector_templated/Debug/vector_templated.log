@@ -1,0 +1,16 @@
+﻿  vector_templated.cpp
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.cpp(16,19): warning C4244: инициализация: преобразование "_Rep" в "unsigned int", возможна потеря данных
+          with
+          [
+              _Rep=__int64
+          ]
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.h(112,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.h(109): message : во время компиляции функции-члена класс шаблон "bool subvector<std::string>::resize(size_t)"
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.cpp(31): message : выполняется компиляция ссылки на экземпляр шаблон функции "bool subvector<std::string>::resize(size_t)"
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.cpp(25): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "subvector<std::string>"
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.h(64,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.h(62): message : во время компиляции функции-члена класс шаблон "void subvector<std::string>::expand(size_t)"
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.h(83): message : выполняется компиляция ссылки на экземпляр шаблон функции "void subvector<std::string>::expand(size_t)"
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.h(41): message : во время компиляции функции-члена класс шаблон "subvector<std::string>::subvector(void)"
+D:\Code\2-sem\vector_templated\vector_templated\vector_templated.cpp(25): message : выполняется компиляция ссылки на экземпляр шаблон функции "subvector<std::string>::subvector(void)"
+  vector_templated.vcxproj -> D:\Code\2-sem\vector_templated\Debug\vector_templated.exe

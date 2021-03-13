@@ -1,0 +1,8 @@
+﻿  subforwardlist_oop.cpp
+D:\Code\2-sem\subforwardlist_oop\subforwardlist_oop\subforwardlist_oop.cpp(288,19): warning C4244: инициализация: преобразование "_Rep" в "unsigned int", возможна потеря данных
+          with
+          [
+              _Rep=__int64
+          ]
+D:\Code\2-sem\subforwardlist_oop\subforwardlist_oop\subforwardlist_oop.cpp(84): warning C4715: subforwardlist::operator[]: значение возвращается не при всех путях выполнения
+  subforwardlist_oop.vcxproj -> D:\Code\2-sem\subforwardlist_oop\Debug\subforwardlist_oop.exe
