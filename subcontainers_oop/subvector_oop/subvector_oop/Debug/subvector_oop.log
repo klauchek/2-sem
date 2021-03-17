@@ -1,9 +1,11 @@
 ﻿  subvector_oop.cpp
-D:\Code\2-sem\subvector_oop\subvector_oop\subvector_oop.cpp(62,27): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Code\2-sem\subvector_oop\subvector_oop\subvector_oop.cpp(108,27): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Code\2-sem\subvector_oop\subvector_oop\subvector_oop.cpp(161,19): warning C4244: инициализация: преобразование "_Rep" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\subcontainers_oop\subvector_oop\subvector_oop\subvector_oop.cpp(25,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\subcontainers_oop\subvector_oop\subvector_oop\subvector_oop.cpp(71,23): warning C4018: <: несоответствие типов со знаком и без знака
+  subvector_profiler.cpp
+D:\Code\2-sem\subcontainers_oop\subvector_oop\subvector_oop\subvector_profiler.cpp(12,19): warning C4244: инициализация: преобразование "_Rep" в "unsigned int", возможна потеря данных
           with
           [
               _Rep=__int64
           ]
-  subvector_oop.vcxproj -> D:\Code\2-sem\subvector_oop\Debug\subvector_oop.exe
+  Создание кода...
+  subvector_oop.vcxproj -> D:\Code\2-sem\subcontainers_oop\subvector_oop\Debug\subvector_oop.exe

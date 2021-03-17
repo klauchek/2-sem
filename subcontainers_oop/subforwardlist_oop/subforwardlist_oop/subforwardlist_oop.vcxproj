@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="subforwardlist_oop.cpp" />
+    <ClCompile Include="subforwardlist_profiler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="subforwardlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
