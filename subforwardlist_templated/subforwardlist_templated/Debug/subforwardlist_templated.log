@@ -1,0 +1,7 @@
+﻿  profiler.cpp
+D:\Code\2-sem\subforwardlist_templated\subforwardlist_templated\profiler.cpp(13,19): warning C4244: инициализация: преобразование "_Rep" в "unsigned int", возможна потеря данных
+          with
+          [
+              _Rep=__int64
+          ]
+  subforwardlist_templated.vcxproj -> D:\Code\2-sem\subforwardlist_templated\Debug\subforwardlist_templated.exe

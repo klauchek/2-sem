@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="profiler.cpp" />
     <ClCompile Include="vector_templated.cpp" />
   </ItemGroup>
   <ItemGroup>
