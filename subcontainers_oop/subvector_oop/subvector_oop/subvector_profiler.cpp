@@ -1,6 +1,6 @@
 #include "subvector.h"
 
-//!PROFILER FOR SUBVECTOR
+///////////////!PROFILER FOR SUBVECTOR ///////////////////////////
 
 double get_time()
 {
@@ -17,6 +17,31 @@ int rand_uns(int min, int max)
 
 int main()
 {
+
+    //////////////// NEW FUNCTIONS TESTING: INSERT & ERASE! ////////////////////////
+    subvector sv1;
+    for (int i = 0; i < 10; i++)
+    {
+        sv1.push_back(2);
+    }
+
+    sv1.insert(10, 1);
+    cout << "cap: " << sv1.get_cap() << endl;
+    cout << "size: " << sv1.get_top() << endl;
+    cout << sv1[10] << endl;
+    cout << endl;
+    sv1.insert(1, 1);
+    cout << sv1[0] << " " << sv1[1] << " " << sv1[2] << endl;
+    cout << "cap: " << sv1.get_cap() << endl;
+    cout << "size: " << sv1.get_top() << endl;
+    cout << endl;
+    sv1.erase(1);
+    cout << sv1[0] << " " << sv1[1] << " " << sv1[2] << endl;
+    cout << "cap: " << sv1.get_cap() << endl;
+    cout << "size: " << sv1.get_top() << endl;
+
+
+//////////////////// ! PR0FILER ! /////////////////////
     int n = 100000;
     int* test_sequence = new int[n], sum_for_O3 = 0, sum_check = 0,
         * pop_push_sequence_eq = new int[n],

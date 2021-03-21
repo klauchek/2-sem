@@ -1,0 +1,5 @@
+﻿  push_back (subvector).cpp
+D:\Code\2-sem\push_back (subvector)\push_back (subvector)\push_back (subvector).cpp(53,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\push_back (subvector)\push_back (subvector)\push_back (subvector).cpp(82,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\push_back (subvector)\push_back (subvector)\push_back (subvector).cpp(87,36): warning C4018: <: несоответствие типов со знаком и без знака
+  push_back (subvector).vcxproj -> D:\Code\2-sem\push_back (subvector)\Debug\push_back (subvector).exe

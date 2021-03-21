@@ -31,6 +31,12 @@ public:
 
     void shrink_to_fit();
 
+    bool insert(int a, int d);
+
+    bool erase(int a);
+
+    bool pop_back_();
+
     //! Reloaded operator [] for vector
     int operator [](int i);
 

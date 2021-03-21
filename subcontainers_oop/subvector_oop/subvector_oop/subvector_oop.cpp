@@ -1,82 +1,184 @@
 #include "subvector.h"
 
-
+//create empty subvector
 subvector::subvector()
 {
-    this->mas = nullptr;
-    this->capacity = 0;
-    this->top = 0;
+    mas = nullptr;
+    capacity = 0;
+    top = 0;
 }
 
+//destructor
 subvector::~subvector()
 {
-    delete[] this->mas;
-    this->mas = nullptr;
+    delete[] mas;
+    mas = nullptr;
 }
 
+//cleaк the contents
 void subvector::clear()
 {
-    this->top = 0;
+    top = 0;
 }
 
+//increase capacity
 void subvector::expand(unsigned int new_cap)
 {
     int* new_mas = new int[new_cap];
-    for (int i = 0; i < this->top; i++)
-        new_mas[i] = (this->mas)[i];
+    for (int i = 0; i < top; i++)
+        new_mas[i] = (mas)[i];
 
-    delete[] this->mas;
-    this->mas = new_mas;
+    delete[] mas;
+    mas = new_mas;
 }
 
-//добавление элемента в конец недовектора
-//с выделением дополнительной памяти при необходимости 
-bool subvector::push_back(int d)
+//add element with number a
+bool subvector::insert(int a, int d) //a - where, d - data
 {
-    if (this->capacity > this->top)
+    if (a == top)
     {
-        this->top++;
-        this->mas[this->top - 1] = d;
+        push_back(d);
+        return true;
     }
     else
     {
-        expand(2 * ((this->capacity) + 1));
-        this->capacity = 2 * ((this->capacity) + 1);
-        this->top++;
-        this->mas[this->top - 1] = d;
+        if (capacity > top)
+        {
+            top++;
+            int* new_mas = new int[top];
+            for (int i = 0; i < top; i++)
+            {
+                if (i < a)
+                {
+                    new_mas[i] = mas[i];
+                }
+                else if (i == a)
+                {
+                    new_mas[i] = d;
+                }
+                else
+                {
+                    new_mas[i] = mas[i + 1];
+                }
+            }
+            delete[] mas;
+            mas = new_mas;
+            return true;
+        }
+        else
+        {
+            expand(2 * (capacity + 1));
+            capacity = 2 * (capacity + 1);
+            top++;
+            int* new_mas = new int[top];
+            for (int i = 0; i < top; i++)
+            {
+                if (i < a)
+                {
+                    new_mas[i] = mas[i];
+                }
+                else if (i == a)
+                {
+                    new_mas[i] = d;
+                }
+                else
+                {
+                    new_mas[i] = mas[i + 1];
+                }
+            }
+            delete[] mas;
+            mas = new_mas;
+            return true;
+        }
+    }
+}
+
+//delete element with number a
+bool subvector::erase(int a) // a - whete
+{
+    if (a == top-1)
+    {
+        return pop_back_();
+    }
+    else
+    {
+        top--;
+        int* new_mas = new int[top];
+        for (int i = 0; i < top; i++)
+        {
+            if (i < a)
+            {
+                new_mas[i] = mas[i];
+            }
+            else
+            {
+                new_mas[i] = mas[i + 1];
+            }
+        }
+        delete[] mas;
+        mas = new_mas;
+        return true;
+    }
+}
+
+//add element to the end of the subvector
+bool subvector::push_back(int d)
+{
+    if (capacity > top)
+    {
+        top++;
+        mas[top - 1] = d;
+    }
+    else
+    {
+        expand(2 * (capacity + 1));
+        capacity = 2 * ((capacity) + 1);
+        top++;
+        mas[top - 1] = d;
     }
 
     return true;
 }
 
-//удаление элемента с конца недовектора
+//delete element from the end of the subvector
 
 int subvector::pop_back() {
 
-    if (this->top == 0)
+    if (top == 0)
         return 0;
 
-    int last = this->mas[(this->top) - 1];
+    int last = mas[(top) - 1];
 
-    this->top--;
+    top--;
 
     return last;
 }
 
-//увеличить емкость недовектора
+bool subvector::pop_back_()
+{
+
+    if (top == 0)
+        return false;
+
+    top--;
+    return true;
+
+}
+
+//increase top
 
 bool subvector::resize(unsigned int new_capacity) {
 
     int* new_mas = new int[new_capacity];
-    for (int i = 0; i < this->top; i++)
+    for (int i = 0; i < top; i++)
     {
-        new_mas[i] = (this->mas)[i];
+        new_mas[i] = (mas)[i];
     }
 
-    this->capacity = new_capacity;
+    capacity = new_capacity;
 
-    delete[] this->mas;
-    this->mas = new_mas;
+    delete[] mas;
+    mas = new_mas;
     return true;
 }
 
@@ -84,13 +186,13 @@ bool subvector::resize(unsigned int new_capacity) {
 
 void subvector::shrink_to_fit() {
 
-    if (this->capacity == this->top)
+    if (capacity == top)
         return;
 
-    if (this->capacity > this->top)
+    if (capacity > top)
     {
-        expand(this->top);
-        this->capacity = this->top;
+        expand(top);
+        capacity = top;
     }
 
 }
@@ -102,11 +204,11 @@ int subvector::operator [](int i)
 
 unsigned int subvector::get_cap()
 {
-    return this->capacity;
+    return capacity;
 }
 
 unsigned int subvector::get_top()
 {
-    return this->top;
+    return top;
 }
 
