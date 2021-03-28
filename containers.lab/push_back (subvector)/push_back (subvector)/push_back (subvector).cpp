@@ -1,7 +1,8 @@
 ﻿#include <iostream>
-#include <ctime>
+#include <fstream>
+#include <vector>
 #include <cstdlib>
-#include <chrono>
+#include <ctime>
 
 ////////график capacity и size от i - числа итераций
 using namespace std;
@@ -50,7 +51,7 @@ public:
     void expand(unsigned int new_cap)
     {
         int* new_mas = new int[new_cap];
-        for (int i = 0; i < top; i++)
+        for (unsigned int i = 0; i < top; i++)
             new_mas[i] = (mas)[i];
 
         delete[] mas;
@@ -73,28 +74,18 @@ public:
 
 int main()
 {
-    int n = 1000;
+    ofstream out;
+    unsigned int n = 2500000;
 
-    while (n <= 100000) {
+    subvector sv;
 
-        subvector sv;
+    srand(time(0));
 
-        srand(time(0));
-
-        auto begin = chrono::high_resolution_clock::now();
-
-        ////////////
-        for (unsigned int i = 0; i < n; i++)
-        {
-            sv.push_back(rand());
-        }
-
-        auto end = chrono::high_resolution_clock::now();
-        cout << "Time of " << n << " iterations: " << chrono::duration_cast <chrono::milliseconds>(end - begin).count() << ";" << endl;
-        cout << "capacity: " << sv.get_cap() << "; size: " << sv.get_top() << endl;
-        cout << endl;
-        n += 1000;
-
+    out.open("data.txt");
+    for (unsigned int i = 0; i < n; i++)
+    {
+        sv.push_back(rand());
+        out << sv.get_cap() << " " << sv.get_top() << endl;
     }
 
     return 0;

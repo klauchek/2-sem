@@ -1,41 +1,33 @@
 ﻿#include <iostream>
-#include <ctime>
-#include <cstdlib>
-#include <chrono>
+#include <fstream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 
 ////////график capacity и size от i - числа итераций
+//////по факту график capacity от size
 using namespace std;
 
 
 int main()
 {
-    int n = 1000;
+    ofstream out;
+    unsigned int n = 2500000;
 
-    while (n <= 100000) {
+    vector <int> v;
 
-        vector <int> v;
+    out.open("data.txt");
 
-        srand(time(0));
+    out << 'x' << " " << 'y' << endl;
 
-        auto begin = chrono::high_resolution_clock::now();
+    srand(time(0));
 
-        ////////////
-        for (unsigned int i = 0; i < n; i++)
-        {
-            v.push_back(rand());
-        }
-
-        auto end = chrono::high_resolution_clock::now();
-        cout << "Time of " << n << " iterations: " << chrono::duration_cast <chrono::milliseconds>(end - begin).count() << ";" << endl;
-        cout << "capacity: " << v.capacity() << "; size: " << v.size() << endl;
-        cout << endl;
-        n += 1000;
-
-
-        /*for (int i = 0; i < n; i++){
-             cout << arr[i] << " ";*/
+    for (unsigned int i = 0; i < n; i++)
+    {
+       v.push_back(rand());
+       out << v.capacity() << " " << v.size() << endl;
     }
+
 
     return 0;
 }

@@ -1,0 +1,6 @@
+﻿  access (subvector).cpp
+D:\Code\2-sem\containers.lab\access (subvector)\access (subvector)\access (subvector).cpp(53,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\containers.lab\access (subvector)\access (subvector)\access (subvector).cpp(91,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\containers.lab\access (subvector)\access (subvector)\access (subvector).cpp(98,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\containers.lab\access (subvector)\access (subvector)\access (subvector).cpp(125,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  access (subvector).vcxproj -> D:\Code\2-sem\containers.lab\access (subvector)\x64\Debug\access (subvector).exe
