@@ -1,3 +1,0 @@
-﻿  push_front (forward_list).cpp
-D:\Code\2-sem\containers.lab\push_front (forward_list)\push_front (forward_list)\push_front (forward_list).cpp(25,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  push_front (forward_list).vcxproj -> D:\Code\2-sem\containers.lab\push_front (forward_list)\Debug\push_front (forward_list).exe

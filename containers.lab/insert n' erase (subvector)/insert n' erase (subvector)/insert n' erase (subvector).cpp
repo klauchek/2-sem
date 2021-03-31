@@ -43,7 +43,7 @@ int main()
         //////////вставим 100 эл по ранее сгненрированным индексам
         for (int i = 0; i < 100; i++)
         {
-            sv.insert(indexes[i], rand()); //вставить элемент с номером indexes[i], т.е. элемент с заранее сгненрированным номером
+            sv.insert(rand(), indexes[i]); //вставить элемент с номером indexes[i], т.е. элемент с заранее сгненрированным номером
         }
 
         auto end = chrono::high_resolution_clock::now();
@@ -71,12 +71,9 @@ int main()
         //далее нужно увеличить размер и проделать все то же самое
         //размер будем увеличивать push_back'ом на 50000
 
-        int cnter = 0;
  
-        for ( int i = 0; i < 3; i++)
+        for ( int i = 0; i < 50000; i++)
         {
-            cnter++;
-            std::cout << cnter << " ";
             sv.push_back(rand());
 
         }

@@ -1,0 +1,4 @@
+﻿  push_front n' pop_front.cpp
+D:\Code\2-sem\containers.lab\push_front n' pop_front\push_front n' pop_front\push_front n' pop_front.cpp(28,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\containers.lab\push_front n' pop_front\push_front n' pop_front\push_front n' pop_front.cpp(49,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  push_front n' pop_front.vcxproj -> D:\Code\2-sem\containers.lab\push_front n' pop_front\Debug\push_front n' pop_front.exe
