@@ -1,6 +1,6 @@
 ﻿  subvector.cpp
-D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(24,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(35,25): warning C4018: >=: несоответствие типов со знаком и без знака
-D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(41,30): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(65,30): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(22,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(76,31): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(102,31): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Code\2-sem\containers.lab\insert n' erase (subvector)\insert n' erase (subvector)\subvector.cpp(138,27): warning C4018: <: несоответствие типов со знаком и без знака
   insert n' erase (subvector).vcxproj -> D:\Code\2-sem\containers.lab\insert n' erase (subvector)\Debug\insert n' erase (subvector).exe

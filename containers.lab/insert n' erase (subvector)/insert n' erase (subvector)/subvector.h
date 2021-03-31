@@ -22,15 +22,15 @@ public:
 
     ~subvector();
 
-    void insert(int data, int index);
+    bool insert(int index, int data);
 
-    bool pop_back_();
+    int pop_back();
 
-    void erase(int index);
+    int erase(int index);
 
     void expand(unsigned int new_cap);
 
-    bool push_back(int d);
+    bool push_back(int data);
 
     unsigned int get_top();
 };
