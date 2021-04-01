@@ -33,6 +33,8 @@ public:
     bool push_back(int data);
 
     unsigned int get_top();
+
+    unsigned int get_cap();
 };
 
 

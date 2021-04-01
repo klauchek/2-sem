@@ -19,6 +19,7 @@ subvector::~subvector()
 void subvector::expand(unsigned int new_cap)
 {
     int* new_mas = new int[new_cap];
+   /* std::cout << "new cap is: " << new_cap << std::endl;*/
     for (int i = 0; i < top; i++)
         new_mas[i] = mas[i];
 
@@ -59,6 +60,14 @@ bool subvector::push_back(int data)
     return true;
 }
 
+
+//for (int i = 0; i < (top - index - 1); i++)
+//{
+//    mas[index + i] = mas[index + i + 1];
+//}
+//
+//top--;
+
 //add element with number index
 bool subvector::insert(int index, int data) //index - where
 {
@@ -72,24 +81,12 @@ bool subvector::insert(int index, int data) //index - where
         if (capacity > top)
         {
             //top++;
-            int* new_mas = new int[top + 1];
-            for (int i = 0; i < (top + 1); i++)
-            {
-                if (i < index)
-                {
-                    new_mas[i] = mas[i];
-                }
-                else if (i == index)
-                {
-                    new_mas[i] = data;
-                }
-                else
-                {
-                    new_mas[i] = mas[i - 1];
-                }
+            //int* new_mas = new int[top + 1];
+            mas[index] = data;
+            for (int i = 1; i < (top - index + 1); i++)
+            {   
+               mas[index + i] = mas[index + i - 1];
             }
-            delete[] mas;
-            mas = new_mas;
             top++;
             return true;
         }
@@ -132,24 +129,16 @@ int subvector::erase(int index) // index - where
     }
     else
     {
-        int to_del = mas[top - 1];
-       // top--;
-        int* new_mas = new int[top - 1];
-        for (int i = 0; i < (top - 1); i++)
+        int to_del = mas[index];
+
+        for (int i = 0; i < (top - index - 1); i++)
         {
-            if (i < index)
-            {
-                new_mas[i] = mas[i];
-            }
-            else
-            {
-                new_mas[i] = mas[i + 1];
-            }
+            mas[index + i] = mas[index + i + 1];
         }
-        delete[] mas;
-        mas = new_mas;
-        top--;
-        return to_del;
+
+         top--;
+         return to_del;
+        
     }
 }
 
@@ -159,4 +148,8 @@ unsigned int subvector::get_top()
     return top;
 }
 
+unsigned int subvector:: get_cap()
+{
+    return capacity;
+}
 
