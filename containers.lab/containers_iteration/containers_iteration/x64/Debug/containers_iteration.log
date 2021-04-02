@@ -1,0 +1,4 @@
+﻿  containers_iteration.cpp
+D:\Code\2-sem\containers.lab\containers_iteration\containers_iteration\containers_iteration.cpp(23,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\containers.lab\containers_iteration\containers_iteration\containers_iteration.cpp(133,36): warning C4018: <: несоответствие типов со знаком и без знака
+  containers_iteration.vcxproj -> D:\Code\2-sem\containers.lab\containers_iteration\x64\Debug\containers_iteration.exe
