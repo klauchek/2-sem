@@ -1,3 +1,3 @@
 ﻿  insert n' erase (vector).cpp
-D:\Code\2-sem\containers.lab\insert n' erase (vector)\insert n' erase (vector)\insert n' erase (vector).cpp(21,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Code\2-sem\containers.lab\insert n' erase (vector)\insert n' erase (vector)\insert n' erase (vector).cpp(16,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   insert n' erase (vector).vcxproj -> D:\Code\2-sem\containers.lab\insert n' erase (vector)\Debug\insert n' erase (vector).exe

@@ -1,11 +1,6 @@
 ﻿
 ////График: среднее время вставки и удаления  для vector и subvector от size. 
-/*
-рандомно сгенерить номера, к которым будет производиться доступ и записать в массив - так для каждого сайз
-делать это вне измерения времени
 
-
-*/
 #include "subvector.h"
 
 using namespace std;
@@ -14,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    int n = 500000;
+    int n = 50000;
 
     srand(time(0));
 
@@ -32,6 +27,13 @@ int main()
         indexes[i] = rand() % sv.get_top(); //имеют номера от 0 до n - размера векора
     }
 
+    ofstream out_in;
+    out_in.open("data_in_sv.txt");
+    out_in << "time" << " " << "size" << endl;
+
+    ofstream out_er;
+    out_er.open("data_er_sv.txt");
+    out_er << "time" << " " << "size" << endl;
 
     while (n <= 2500000) {
 
@@ -47,8 +49,7 @@ int main()
 
         auto end = chrono::high_resolution_clock::now();
 
-        cout << "Time of insert random element: " << (chrono::duration_cast <chrono::microseconds>(end - begin).count()) / 100 << "; size =" << sv.get_top() << endl;
-        //cout << endl;
+        out_in << (chrono::duration_cast <chrono::microseconds>(end - begin).count()) / 100 << " " << sv.get_top() << endl;
 
 
         ////////////// ERASE ////////////////
@@ -63,23 +64,19 @@ int main()
 
         auto end_ = chrono::high_resolution_clock::now();
 
-        cout << "Time of erase random element: " << (chrono::duration_cast <chrono::microseconds>(end_ - begin_).count()) / 100 << "; size =" << sv.get_top() << endl;
-        cout << endl << endl;
-
-
+        out_er << (chrono::duration_cast <chrono::microseconds>(end_ - begin_).count()) / 100 << " " << sv.get_top() << endl;
+ 
         //далее нужно увеличить размер и проделать все то же самое
-        //размер будем увеличивать push_back'ом на 50000
+        //размер будем увеличивать push_back'ом на 1000
 
  
-        for ( int i = 0; i < 50000; i++)
+        for ( int i = 0; i < 5000; i++)
         {
             sv.push_back(rand());
 
         }
 
-        //sv.push_back(rand());
-        //sv.push_back(rand());
-        n += 50000; //увеличиваем размер на 50000, доходя до 2,5 млн
+        n += 5000; //увеличиваем размер на 1000, доходя до 2,5 млн
     }
 
     return 0;

@@ -23,7 +23,7 @@ int main()
 
     out1.open("data_push.txt");
 
-    out1 << 'x' << " " << 'y' << endl;
+    out1 << "time" << " " << "size" << endl;
 
     srand(time(0));
 
@@ -44,7 +44,7 @@ int main()
 
     out2.open("data_pop.txt");
 
-    out2 << 'x' << " " << 'y' << endl;
+    out2 << "time" << " " << "size" << endl;
 
     srand(time(0));
 

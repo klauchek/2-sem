@@ -1,6 +1,4 @@
 ﻿  push_front n' pop_front (subforwardlist).cpp
 D:\Code\2-sem\containers.lab\push_front n' pop_front (subforwardlist)\push_front n' pop_front (subforwardlist)\push_front n' pop_front (subforwardlist).cpp(23,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
 D:\Code\2-sem\containers.lab\push_front n' pop_front (subforwardlist)\push_front n' pop_front (subforwardlist)\push_front n' pop_front (subforwardlist).cpp(41,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  subforwardlist.cpp
-  Создание кода...
   push_front n' pop_front (subforwardlist).vcxproj -> D:\Code\2-sem\containers.lab\push_front n' pop_front (subforwardlist)\Debug\push_front n' pop_front (subforwardlist).exe

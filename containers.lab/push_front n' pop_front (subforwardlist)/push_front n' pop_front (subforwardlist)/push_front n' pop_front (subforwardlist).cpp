@@ -17,8 +17,8 @@ int main()
 
 ////////////// PUSH_FRONT ///////////////
 
-    out1.open("data_push.txt");
-    out1 << 'x' << " " << 'y' << endl;
+    out1.open("data_push_sf.txt");
+    out1 << "time" << " " << "size" << endl;
 
     srand(time(0));
 
@@ -35,8 +35,8 @@ int main()
 
  /////////// POP_FRONT /////////////////
 
-    out2.open("data_pop.txt");
-    out2 << 'x' << " " << 'y' << endl;
+    out2.open("data_pop_sf.txt");
+    out2 << "time" << " " << "size" << endl;
 
     srand(time(0));
 

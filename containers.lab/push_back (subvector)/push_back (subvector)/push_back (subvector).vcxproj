@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="push_back (subvector).cpp" />
+    <ClCompile Include="subvector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="subvector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

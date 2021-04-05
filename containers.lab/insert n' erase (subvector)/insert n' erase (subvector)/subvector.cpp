@@ -85,7 +85,7 @@ bool subvector::insert(int index, int data) //index - where
             mas[index] = data;
             for (int i = 1; i < (top - index + 1); i++)
             {   
-               mas[index + i] = mas[index + i - 1];
+                mas[index + i] = mas[index + i - 1];
             }
             top++;
             return true;

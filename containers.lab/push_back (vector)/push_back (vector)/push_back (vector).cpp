@@ -18,14 +18,14 @@ int main()
 
     out.open("data.txt");
 
-    out << 'x' << " " << 'y' << endl;
+    out << "cap" << " " << "size" << " " << "i" << endl;
 
     srand(time(0));
 
     for (unsigned int i = 0; i < n; i++)
     {
        v.push_back(rand());
-       out << v.capacity() << " " << v.size() << endl;
+       out << v.capacity() << " " << v.size() << " " << i << endl;
     }
 
 
