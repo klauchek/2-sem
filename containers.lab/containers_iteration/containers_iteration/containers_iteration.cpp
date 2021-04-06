@@ -31,7 +31,7 @@ int main()
     vector<int> v(n_v); //создание векора на n рандомных чисел; в начале на 10000
     for (int i = 0; i < n_v; i++)
     {
-        v[i] = rand();
+        v[i] = i;
     }
 
     out_v << "time" << " " << "size" << endl;
@@ -52,7 +52,7 @@ int main()
 
         for (unsigned int i = 0; i < 5000; i++)
         {
-            v.push_back(rand());
+            v.push_back(n_v + i);
         }
         n_v += 5000; //увеличиваем размер на 5000, доходя до 2,5 млн
     }
@@ -68,7 +68,7 @@ int main()
     forward_list<int> f; //создание односвязного списка на n рандомных чисел; в начале на 10000
     for (int i = 0; i < n_f; i++)
     {
-        f.push_front(rand());
+        f.push_front(i);
         size++;
     }
 
@@ -90,13 +90,13 @@ int main()
 
         for (unsigned int i = 0; i < 5000; i++)
         {
-            f.push_front(rand());
+            f.push_front(n_f + i);
         }
         n_f += 5000;//увеличиваем размер на 5000, доходя до 2,5 млн
         size += 5000;
     }
 
-    ///////////////// LIST ////////////////////////////////////
+    /////////////// LIST ////////////////////////////////////
 
     int n_l = 10000;
 
@@ -107,7 +107,7 @@ int main()
     list<int> l; //создание двусвязного списка на n рандомных чисел; в начале на 10000
     for (int i = 0; i < n_l; i++)
     {
-        l.push_front(rand());
+        l.push_front(i);
         size_l++;
     }
 
@@ -129,7 +129,7 @@ int main()
 
         for (unsigned int i = 0; i < 5000; i++)
         {
-            l.push_front(rand());
+            l.push_front(n_l + i);
         }
         n_l += 5000;//увеличиваем размер на 50000, доходя до 2,5 млн
         size_l += 5000;
@@ -141,11 +141,12 @@ int main()
 
     ofstream out_s;
     out_s.open("set.txt");
+    int i = 0;
 
-    set<int> s; //создание дерева на n рандомных чисел; в начале на 500000
-    for (int i = 0; i < n_s; i++)
+    set<int> s; //создание дерева на n чисел; в начале на 100000
+    for (; i < n_s; i++)
     {
-        s.insert(rand());
+        s.insert(i);
     }
 
     out_s << "time" << " " << "size" << endl;
@@ -164,16 +165,16 @@ int main()
         //далее нужно увеличииь размер и проделать все то же самое
         //размер будем увеличивать push_back'ом на 5000
 
-        for (unsigned int i = 0; i < 5000; i++)
+        for (unsigned int j = 0; j < 5000; j++)
         {
-            s.insert(rand());
+            s.insert(n_s + j);
         }
         n_s += 5000;//увеличиваем размер на 5000, доходя до 2,5 млн
     }
 
 
 
-    /////////////////////// MAP //////////////////////
+    ///////////////////////// MAP //////////////////////
 
     int n_m = 10000;
 
@@ -183,7 +184,7 @@ int main()
     map<int,int> m; //создание map на n рандомных чисел; в начале на 10000
     for (int i = 0; i < n_m; i++)
     {
-        m.insert(make_pair(i, rand()));
+        m.insert(make_pair(i, i + 1));
     }
 
     out_m << "time" << " " << "size" << endl;
@@ -203,7 +204,7 @@ int main()
 
         for (int i = 0; i < 5000; i++)
         {
-            m.insert(make_pair(n_m + i, rand()));
+            m.insert(make_pair(n_m + i, n_m + i + 1));
         }
         n_m += 5000;//увеличиваем размер на 5000, доходя до 2,5 млн
     }
